@@ -1,9 +1,20 @@
 .active {
-  color: blue;
+  color: white;
   text-decoration: none;
+  font-size: large;
+  font-weight: 600;
+}
+.active:hover {
+  color: white;
 }
 
 .default {
-  color: antiquewhite;
+  color: #ced4da;
   text-decoration: none;
+  font-size: large;
+  font-weight: 600;
+}
+
+.default:hover {
+  color: #ced4da;
 }

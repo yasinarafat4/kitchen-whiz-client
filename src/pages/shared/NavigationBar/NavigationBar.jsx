@@ -7,12 +7,18 @@ import "./NavigationBar.css";
 
 const NavigationBar = () => {
   return (
-    <Container>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <div>
+      <Navbar
+        className="p-4"
+        collapseOnSelect
+        expand="lg"
+        style={{ backgroundColor: "#bb4042" }}
+        variant="dark"
+      >
         <Container>
           <Link className="text-decoration-none" to="/">
             {" "}
-            <Navbar.Brand className="fs-3"> Kitchen Whiz </Navbar.Brand>
+            <Navbar.Brand className="fs-1 me-md-5"> Kitchen Whiz </Navbar.Brand>
           </Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -68,7 +74,7 @@ const NavigationBar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </Container>
+    </div>
   );
 };
 
