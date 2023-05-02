@@ -1,0 +1,9 @@
+.active {
+  color: blue;
+  text-decoration: none;
+}
+
+.default {
+  color: antiquewhite;
+  text-decoration: none;
+}
