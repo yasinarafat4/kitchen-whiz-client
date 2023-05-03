@@ -8,7 +8,7 @@ const Register = () => {
       <Container>
         <h4 className="mb-3 text-center">Register your account</h4>
         <Form>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
@@ -17,7 +17,7 @@ const Register = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -27,7 +27,7 @@ const Register = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"

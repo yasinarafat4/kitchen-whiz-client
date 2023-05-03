@@ -1,12 +1,15 @@
-import React from "react";
-import { Button, Container } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import "./NavigationBar.css";
 import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavigationBar = () => {
+  const { user } = useContext(AuthContext);
+
   return (
     <div>
       <Navbar
@@ -44,13 +47,14 @@ const NavigationBar = () => {
               </NavLink>
             </Nav>
             <Nav className="d-flex align-items-center">
-              <FaUserCircle
+              {user.displayName}
+              {/* <FaUserCircle
                 style={{
                   fontSize: "2rem",
                   color: "black",
                   margin: "10px",
                 }}
-              ></FaUserCircle>
+              ></FaUserCircle> */}
               <Link to="/login">
                 <button className="login-btn">Login</button>
               </Link>
