@@ -8,7 +8,13 @@ import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavigationBar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div>
@@ -46,20 +52,8 @@ const NavigationBar = () => {
                 About
               </NavLink>
             </Nav>
+
             <Nav className="d-flex align-items-center">
-              {user.displayName}
-              {/* <FaUserCircle
-                style={{
-                  fontSize: "2rem",
-                  color: "black",
-                  margin: "10px",
-                }}
-              ></FaUserCircle> */}
-              <Link to="/login">
-                <button className="login-btn">Login</button>
-              </Link>
-            </Nav>
-            {/* <Nav>
               {user && (
                 <FaUserCircle
                   style={{
@@ -71,17 +65,15 @@ const NavigationBar = () => {
               )}
 
               {user ? (
-                <Button onClick={handleLogOut} className="px-5" variant="dark">
+                <button onClick={handleLogOut} className="log-btn">
                   Logout
-                </Button>
+                </button>
               ) : (
                 <Link to="/login">
-                  <Button className="px-5" variant="dark">
-                    Login
-                  </Button>
+                  <button className="log-btn">Login</button>
                 </Link>
               )}
-            </Nav> */}
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
