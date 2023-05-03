@@ -3,8 +3,13 @@ import { Button, Container, Form } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import app from "../../firebase/firebase.config";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
   const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,6 +34,16 @@ const Login = () => {
         console.log(error);
       });
   };
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.log(error.message));
+  };
+
   return (
     <div style={{ width: "340px" }} className="p-3 mt-5 mx-auto shadow">
       <Container>
@@ -70,7 +85,10 @@ const Login = () => {
       </Container>
       <p className="text-center fw-semibold fs-5">OR</p>
       <div className="d-flex flex-column gap-1">
-        <Button style={{ backgroundColor: "blue" }}>
+        <Button
+          onClick={handleGoogleSignIn}
+          style={{ backgroundColor: "blue" }}
+        >
           <FaGoogle style={{ color: "#EE2455 " }} /> Login with Google{" "}
         </Button>
         <Button style={{ backgroundColor: "black" }}>

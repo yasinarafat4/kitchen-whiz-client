@@ -61,9 +61,10 @@ const NavigationBar = () => {
                     color: "black",
                     margin: "10px",
                   }}
+                  title={user.displayName}
                 ></FaUserCircle>
               )}
-
+              {/* <img src={user.photoURL} alt="" /> */}
               {user ? (
                 <button onClick={handleLogOut} className="log-btn">
                   Logout
