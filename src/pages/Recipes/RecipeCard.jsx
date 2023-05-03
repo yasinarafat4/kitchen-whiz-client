@@ -11,7 +11,7 @@ const RecipeCard = ({ recipe }) => {
   console.log(recipe);
 
   const handleFavorite = (event) => {
-    toast.success("Favorite! 👍");
+    toast.success("Favorite Recipe!😋");
     setFavorite(event.target.clicked);
   };
 

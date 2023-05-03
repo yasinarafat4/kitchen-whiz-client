@@ -4,11 +4,17 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import app from "../../firebase/firebase.config";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
 
 const Login = () => {
   const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -36,10 +42,21 @@ const Login = () => {
   };
 
   const handleGoogleSignIn = () => {
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error.message));
+  };
+
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => console.log(error.message));
   };
@@ -91,7 +108,10 @@ const Login = () => {
         >
           <FaGoogle style={{ color: "#EE2455 " }} /> Login with Google{" "}
         </Button>
-        <Button style={{ backgroundColor: "black" }}>
+        <Button
+          onClick={handleGithubSignIn}
+          style={{ backgroundColor: "black" }}
+        >
           <FaGithub /> Login with Github
         </Button>
       </div>
