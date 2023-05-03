@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar, FaGratipay } from "react-icons/fa";
 import Rating from "react-rating";
+import { toast } from "react-hot-toast";
 
 const RecipeCard = ({ recipe }) => {
+  const [favorite, setFavorite] = useState(true);
+
   const { recipe_name, ingredients, cooking_method, rating } = recipe;
   console.log(recipe);
+
+  const handleFavorite = (event) => {
+    toast.success("Added to Favorite! 👍");
+    setFavorite(event.target.clicked);
+  };
+
   return (
     <Row className="mt-3">
       <Col>
@@ -39,7 +48,13 @@ const RecipeCard = ({ recipe }) => {
                 />
                 <span className="ms-1">{rating?.number}</span>
               </div>
-              <button className="btn">Favorite</button>
+              <button
+                onClick={handleFavorite}
+                disabled={!favorite}
+                className="btn"
+              >
+                Favorite <FaGratipay />{" "}
+              </button>
             </div>
           </Card.Body>
         </Card>
