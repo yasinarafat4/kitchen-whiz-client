@@ -1,9 +1,10 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import "./NavigationBar.css";
+import { FaUserCircle } from "react-icons/fa";
 
 const NavigationBar = () => {
   return (
@@ -42,11 +43,17 @@ const NavigationBar = () => {
                 About
               </NavLink>
             </Nav>
-            <Nav>
-              <Nav.Link href="#deets">Profile</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
-                Login
-              </Nav.Link>
+            <Nav className="d-flex align-items-center">
+              <FaUserCircle
+                style={{
+                  fontSize: "2rem",
+                  color: "black",
+                  margin: "10px",
+                }}
+              ></FaUserCircle>
+              <Link to="/login">
+                <button className="login-btn">Login</button>
+              </Link>
             </Nav>
             {/* <Nav>
               {user && (

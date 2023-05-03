@@ -18,3 +18,20 @@
 .default:hover {
   color: #ced4da;
 }
+
+.login-btn {
+  background-color: rgb(61, 57, 57);
+  border: none;
+  padding: 10px 30px 10px 30px;
+  border-radius: 10px;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: black;
+  border: none;
+  padding: 10px 30px 10px 30px;
+  border-radius: 10px;
+  color: #ffffff;
+}
