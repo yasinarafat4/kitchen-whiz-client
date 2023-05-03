@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaRegThumbsUp } from "react-icons/fa";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import RecipeCard from "./RecipeCard";
 
 const Recipes = () => {
@@ -50,11 +50,12 @@ const Recipes = () => {
           </div>
         </div>
       </div>
-      <div>
+      <h3 className="mt-5">Popular Recipes of {chef_name}</h3>
+      <Row md={1} lg={3}>
         {chef_recipes.map((recipe) => (
           <RecipeCard recipe={recipe} key={recipe.recipe_id}></RecipeCard>
         ))}
-      </div>
+      </Row>
     </Container>
   );
 };
