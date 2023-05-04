@@ -3,6 +3,7 @@ import Header from "../../shared/Header/Header";
 import { Col, Container, Row } from "react-bootstrap";
 import ChefsCard from "../ChefsCard/ChefsCard";
 import DailySpecials from "../DailySpecials/DailySpecials";
+import CustomersReviews from "../CustomersReviews/CustomersReviews";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -16,10 +17,14 @@ const Home = () => {
 
   return (
     <Container>
+      {/* Header Section*/}
       <Header></Header>
+
+      {/* Daily Special Section */}
       <DailySpecials></DailySpecials>
+
       {/* all chefs data mapped here */}
-      <h2 className="text-center fw-bold mb-3">Our All Chefs</h2>
+      <h2 className="text-center fw-bold mb-5">Our All Chefs</h2>
       <Row className="mx-auto">
         {chefs.map((chef) => (
           <Col md={12} lg={6} key={chef._id}>
@@ -27,6 +32,9 @@ const Home = () => {
           </Col>
         ))}
       </Row>
+
+      {/* Customers Reviews Section*/}
+      <CustomersReviews></CustomersReviews>
     </Container>
   );
 };

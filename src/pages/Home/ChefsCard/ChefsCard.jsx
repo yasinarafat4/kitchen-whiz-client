@@ -14,7 +14,7 @@ const ChefsCard = ({ chef }) => {
   } = chef;
   return (
     // Chefs card section
-    <div className="card mb-3 mx-auto" style={{ maxWidth: "500px" }}>
+    <div className="card mb-5 mx-auto" style={{ maxWidth: "500px" }}>
       <div className="row g-0">
         <div className="col-md-4">
           <img
