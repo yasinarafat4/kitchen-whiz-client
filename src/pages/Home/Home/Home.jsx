@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Header from "../../shared/Header/Header";
 import { Col, Container, Row } from "react-bootstrap";
-import ChefsCard from "../ChefsCard/ChefsCard";
 import DailySpecials from "../DailySpecials/DailySpecials";
 import CustomersReviews from "../CustomersReviews/CustomersReviews";
+// Lazy loading here
+const ChefsCard = React.lazy(() => import("../ChefsCard/ChefsCard"));
+
+/* Lazy loading test here
+const ChefsCard = React.lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("../ChefsCard/ChefsCard")), 2000);
+  });
+});
+*/
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -25,13 +34,21 @@ const Home = () => {
 
       {/* all chefs data mapped here */}
       <h2 className="text-center fw-bold mb-5">Our All Chefs</h2>
-      <Row className="mx-auto">
-        {chefs.map((chef) => (
-          <Col md={12} lg={6} key={chef._id}>
-            <ChefsCard chef={chef}></ChefsCard>
-          </Col>
-        ))}
-      </Row>
+      <Suspense
+        fallback={
+          <div className="d-flex justify-content-center align-items-center fs-3 text-danger fw-semibold">
+            Loading...
+          </div>
+        }
+      >
+        <Row className="mx-auto">
+          {chefs.map((chef) => (
+            <Col md={12} lg={6} key={chef._id}>
+              <ChefsCard chef={chef}></ChefsCard>
+            </Col>
+          ))}
+        </Row>
+      </Suspense>
 
       {/* Customers Reviews Section*/}
       <CustomersReviews></CustomersReviews>

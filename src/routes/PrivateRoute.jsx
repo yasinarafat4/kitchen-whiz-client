@@ -8,7 +8,10 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center mt-5">
+      <div
+        style={{ marginTop: "300px" }}
+        className="d-flex justify-content-center align-items-center mt-5"
+      >
         <Spinner className="fs-5 mt-5" animation="border" variant="danger" />
       </div>
     );
