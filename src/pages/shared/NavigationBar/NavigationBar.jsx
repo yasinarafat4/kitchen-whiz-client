@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink } from "react-router-dom";
 import "./NavigationBar.css";
-import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
 
+  // Logout button
   const handleLogOut = () => {
     logOut()
       .then()
@@ -55,16 +55,19 @@ const NavigationBar = () => {
 
             <Nav className="d-flex align-items-center">
               {user && (
-                <FaUserCircle
+                <Image
+                  title={user.displayName || "User"}
                   style={{
-                    fontSize: "2rem",
-                    color: "black",
+                    width: "40px",
+                    height: "40px",
                     margin: "10px",
+                    border: "2px solid white",
                   }}
-                  title={user.displayName}
-                ></FaUserCircle>
+                  src={user.photoURL || "https://picsum.photos/200/300"}
+                  roundedCircle
+                />
               )}
-              {/* <img src={user.photoURL} alt="" /> */}
+
               {user ? (
                 <button onClick={handleLogOut} className="log-btn">
                   Logout

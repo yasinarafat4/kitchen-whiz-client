@@ -16,6 +16,8 @@ const Home = () => {
   return (
     <Container>
       <Header></Header>
+
+      {/* all chefs data mapped here */}
       <h2 className="text-center fw-bold mb-3">Our All Chefs</h2>
       <Row className="mx-auto">
         {chefs.map((chef) => (

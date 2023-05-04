@@ -13,6 +13,7 @@ const ChefsCard = ({ chef }) => {
     _id,
   } = chef;
   return (
+    // Chefs card section
     <div className="card mb-3 mx-auto" style={{ maxWidth: "500px" }}>
       <div className="row g-0">
         <div className="col-md-4">

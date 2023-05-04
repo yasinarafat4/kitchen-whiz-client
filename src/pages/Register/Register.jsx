@@ -8,6 +8,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // register button
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
