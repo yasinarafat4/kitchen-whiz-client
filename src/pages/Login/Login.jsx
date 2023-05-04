@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import app from "../../firebase/firebase.config";
@@ -119,7 +120,11 @@ const Login = () => {
           onClick={handleGoogleSignIn}
           style={{ backgroundColor: "blue" }}
         >
-          <FaGoogle style={{ color: "#EE2455 " }} /> Login with Google{" "}
+          <FcGoogle
+            className="rounded-circle"
+            style={{ backgroundColor: "white" }}
+          />{" "}
+          Login with Google{" "}
         </Button>
         <Button
           onClick={handleGithubSignIn}
