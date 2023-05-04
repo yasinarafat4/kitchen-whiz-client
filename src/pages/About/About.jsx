@@ -6,7 +6,7 @@ const About = () => {
   return (
     <Container>
       <h2 className="text-center m-5">About Us</h2>
-      <div className="d-md-flex justify-content-center align-items-center mb-5">
+      <div className="d-lg-flex justify-content-center align-items-center mb-5">
         <div className="">
           <p>
             {" "}
@@ -44,7 +44,7 @@ const About = () => {
             hope our recipes bring you joy, comfort, and a taste of China.
           </p>
         </div>
-        <img className="m-3 rounded" src={aboutImg} alt="" />
+        <img className="m-lg-3 w-100 rounded" src={aboutImg} alt="" />
       </div>
     </Container>
   );

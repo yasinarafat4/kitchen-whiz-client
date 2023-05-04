@@ -16,7 +16,7 @@ This is a React-based Chinese food website that allows users to see Chinese Chef
 
 ## Live Link
 
-- Hosted in firebase -> [Kitchen Whiz]()
+- Hosted in firebase -> [Kitchen Whiz](https://kitchen-whiz.web.app/)
 
 ## Resources & Credits
 

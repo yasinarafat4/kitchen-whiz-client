@@ -35,7 +35,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/chefs/${params.id}`),
+          fetch(
+            `https://kitchen-whiz-server-yasinarafat4.vercel.app/chefs/${params.id}`
+          ),
       },
       {
         path: "/login",
