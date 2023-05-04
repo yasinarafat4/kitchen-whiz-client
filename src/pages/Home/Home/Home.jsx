@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Header from "../../shared/Header/Header";
 import { Col, Container, Row } from "react-bootstrap";
 import DailySpecials from "../DailySpecials/DailySpecials";

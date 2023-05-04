@@ -30,7 +30,7 @@ const CustomersReviews = () => {
                       width: "40px",
                       height: "40px",
                       margin: "10px",
-                      border: "2px solid white",
+                      border: "1px solid black",
                     }}
                     src={customerOne}
                     roundedCircle
@@ -65,7 +65,7 @@ const CustomersReviews = () => {
                       width: "40px",
                       height: "40px",
                       margin: "10px",
-                      border: "2px solid white",
+                      border: "1px solid black",
                     }}
                     src={customerTwo}
                     roundedCircle
@@ -100,7 +100,7 @@ const CustomersReviews = () => {
                       width: "40px",
                       height: "40px",
                       margin: "10px",
-                      border: "2px solid white",
+                      border: "1px solid black",
                     }}
                     src={customerThree}
                     roundedCircle
