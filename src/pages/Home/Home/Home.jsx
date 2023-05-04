@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../shared/Header/Header";
 import { Col, Container, Row } from "react-bootstrap";
 import ChefsCard from "../ChefsCard/ChefsCard";
+import DailySpecials from "../DailySpecials/DailySpecials";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -16,7 +17,7 @@ const Home = () => {
   return (
     <Container>
       <Header></Header>
-
+      <DailySpecials></DailySpecials>
       {/* all chefs data mapped here */}
       <h2 className="text-center fw-bold mb-3">Our All Chefs</h2>
       <Row className="mx-auto">
