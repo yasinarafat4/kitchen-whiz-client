@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -12,6 +12,8 @@ import {
 } from "firebase/auth";
 
 const Login = () => {
+  const [error, setError] = useState("");
+
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -35,9 +37,17 @@ const Login = () => {
         console.log(loggedUser);
         navigate(from, { replace: true });
         form.reset();
+        setError("");
       })
       .catch((error) => {
         console.log(error);
+        if (error.code === "auth/user-not-found") {
+          setError("User Not Found. Invalid email or password.");
+        } else if (error.code === "auth/wrong-password") {
+          setError("Wrong Password. Please try again.");
+        } else {
+          setError(error.message);
+        }
       });
   };
 
@@ -84,9 +94,11 @@ const Login = () => {
           </Form.Group>
 
           <Form.Text className="text-success"></Form.Text>
-          <Form.Text className="text-danger"></Form.Text>
+          <Form.Text className="text-danger fw-semibold fs-6">
+            {error}
+          </Form.Text>
           <Button
-            className="btn btn-dark w-100"
+            className="btn btn-dark w-100 mt-3"
             variant="primary"
             type="submit"
           >

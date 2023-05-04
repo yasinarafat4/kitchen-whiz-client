@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -20,9 +22,19 @@ const Register = () => {
         const createdUser = result.user;
         console.log(createdUser);
         form.reset();
+        setError("");
+        setSuccess("User has created successfully");
       })
       .catch((error) => {
         console.log(error);
+        if (error.code === "auth/email-already-in-use") {
+          setError("Email already used. Try with a new email!");
+        } else if (error.code === "auth/weak-password") {
+          setError("Password should be at least 6 characters!");
+        } else {
+          setError(error.message);
+        }
+        setSuccess("");
       });
   };
 
@@ -69,10 +81,12 @@ const Register = () => {
             />
           </Form.Group>
           <Form.Text className="text-success"></Form.Text>
-          <Form.Text className="text-danger"></Form.Text>
-
+          <Form.Text className="text-danger fw-semibold">{error}</Form.Text>
+          <Form.Text className="text-success fw-semibold fs-6">
+            {success}
+          </Form.Text>
           <Button
-            className="btn btn-dark w-100"
+            className="btn btn-dark w-100 mt-2"
             variant="primary"
             type="submit"
           >
