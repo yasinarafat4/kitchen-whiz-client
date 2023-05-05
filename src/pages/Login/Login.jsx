@@ -11,7 +11,6 @@ const Login = () => {
   const { logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   const from = location.state?.from?.pathname || "/";
 
   // login button
@@ -22,16 +21,13 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
     logIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         form.reset();
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
         if (error.code === "auth/user-not-found") {
           setError("User Not Found. Invalid email or password.");
         } else if (error.code === "auth/wrong-password") {
@@ -47,7 +43,6 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => setError(error.message));
@@ -58,7 +53,6 @@ const Login = () => {
     githubSignIn()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => setError(error.message));

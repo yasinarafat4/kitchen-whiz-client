@@ -8,7 +8,6 @@ const RecipeCard = ({ recipe }) => {
   const [favorite, setFavorite] = useState(true);
 
   const { recipe_name, ingredients, cooking_method, rating } = recipe;
-  console.log(recipe);
 
   const handleFavorite = (event) => {
     toast.success("Favorite Recipe!😋");

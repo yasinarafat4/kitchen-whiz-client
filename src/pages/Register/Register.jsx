@@ -21,19 +21,17 @@ const Register = () => {
     const photoUrl = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
 
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser.displayName);
+
+        setSuccess("User has created successfully");
         form.reset();
         updateUserProfile(name, photoUrl);
         navigate(from, { replace: true });
-        setSuccess("User has created successfully");
       })
       .catch((error) => {
-        console.log(error);
         if (error.code === "auth/email-already-in-use") {
           setError("Email already used. Try with a new email!");
         } else if (error.code === "auth/weak-password") {
