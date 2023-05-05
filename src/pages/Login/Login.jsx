@@ -27,6 +27,7 @@ const Login = () => {
 
   // login button
   const handleLogin = (event) => {
+    setError("");
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
@@ -37,9 +38,8 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, { replace: true });
         form.reset();
-        setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -54,23 +54,25 @@ const Login = () => {
   };
 
   const handleGoogleSignIn = () => {
+    setError("");
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate(from, { replace: true });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => setError(error.message));
   };
 
   const handleGithubSignIn = () => {
+    setError("");
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
         navigate(from, { replace: true });
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => setError(error.message));
   };
 
   return (

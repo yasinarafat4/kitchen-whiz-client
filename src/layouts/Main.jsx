@@ -1,28 +1,34 @@
 import Footer from "../pages/shared/Footer/Footer";
 import { Outlet } from "react-router-dom";
 import NavigationBar from "../pages/shared/Navigationbar/Navigationbar";
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
+import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 
 const Main = () => {
-  // loading spinner here
-  const { loading } = useContext(AuthContext);
-  if (loading) {
-    return (
-      <div
-        style={{ marginTop: "300px" }}
-        className="d-flex justify-content-center align-items-center"
-      >
-        <Spinner className="fs-6" animation="border" variant="danger" />
-      </div>
-    );
-  }
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <div>
-      <NavigationBar></NavigationBar>
-      <Outlet></Outlet>
-      <Footer></Footer>
+      {/* Loading Spinner Here */}
+      {isLoading ? (
+        <div
+          style={{ marginTop: "400px" }}
+          className="d-flex justify-content-center align-items-center mt-5"
+        >
+          <Spinner className="fs-5 mt-5" animation="border" variant="danger" />
+        </div>
+      ) : (
+        <>
+          <NavigationBar></NavigationBar>
+          <Outlet></Outlet>
+          <Footer></Footer>
+        </>
+      )}
     </div>
   );
 };

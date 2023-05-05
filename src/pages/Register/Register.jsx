@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
@@ -8,8 +8,12 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   // register button
   const handleRegister = (event) => {
+    setError("");
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -23,7 +27,6 @@ const Register = () => {
         const createdUser = result.user;
         console.log(createdUser);
         form.reset();
-        setError("");
         setSuccess("User has created successfully");
       })
       .catch((error) => {
