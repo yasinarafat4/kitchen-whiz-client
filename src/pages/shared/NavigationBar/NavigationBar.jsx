@@ -56,14 +56,14 @@ const NavigationBar = () => {
             <Nav className="d-flex align-items-center">
               {user && (
                 <Image
-                  title={user.displayName || "User"}
+                  title={user?.displayName}
                   style={{
                     width: "40px",
                     height: "40px",
                     margin: "10px",
                     border: "2px solid white",
                   }}
-                  src={user.photoURL || "https://picsum.photos/200/300"}
+                  src={user?.photoURL}
                   roundedCircle
                 />
               )}

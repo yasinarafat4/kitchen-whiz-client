@@ -6,14 +6,6 @@ import CustomersReviews from "../CustomersReviews/CustomersReviews";
 // Lazy loading here
 const ChefsCard = React.lazy(() => import("../ChefsCard/ChefsCard"));
 
-/* Lazy loading test here
-const ChefsCard = React.lazy(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(import("../ChefsCard/ChefsCard")), 2000);
-  });
-});
-*/
-
 const Home = () => {
   const [chefs, setChefs] = useState([]);
 

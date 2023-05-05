@@ -4,12 +4,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
+  const { createUser, userProfile } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   // register button
   const handleRegister = (event) => {
@@ -17,16 +18,18 @@ const Register = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const photo = form.photo.value;
+    const photoUrl = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(name, email, password);
 
-    console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
+        console.log(createdUser.displayName);
         form.reset();
+        updateUserProfile(name, photoUrl);
+        navigate(from, { replace: true });
         setSuccess("User has created successfully");
       })
       .catch((error) => {
@@ -39,6 +42,18 @@ const Register = () => {
           setError(error.message);
         }
         setSuccess("");
+      });
+  };
+
+  const updateUserProfile = (name, photoUrl) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoUrl,
+    };
+    userProfile(profile)
+      .then(() => {})
+      .catch((error) => {
+        setError(error.message);
       });
   };
 

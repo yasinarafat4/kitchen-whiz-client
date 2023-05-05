@@ -4,22 +4,11 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import app from "../../firebase/firebase.config";
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  getAuth,
-  signInWithPopup,
-} from "firebase/auth";
 
 const Login = () => {
   const [error, setError] = useState("");
 
-  const auth = getAuth(app);
-  const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
-
-  const { logIn } = useContext(AuthContext);
+  const { logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location);
@@ -55,7 +44,7 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     setError("");
-    signInWithPopup(auth, googleProvider)
+    googleSignIn()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -66,7 +55,7 @@ const Login = () => {
 
   const handleGithubSignIn = () => {
     setError("");
-    signInWithPopup(auth, githubProvider)
+    githubSignIn()
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
